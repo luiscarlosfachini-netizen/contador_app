@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Contador',
+      title: "Contador",
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: const ScoreboardScreen(),
@@ -29,53 +29,25 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
   int _scoreLeft = 0;
   int _scoreRight = 0;
 
-  void _incrementLeft() {
-    setState(() {
-      _scoreLeft++;
-    });
-  }
-
-  void _decrementLeft() {
-    setState(() {
-      if (_scoreLeft > 0) _scoreLeft--;
-    });
-  }
-
-  void _incrementRight() {
-    setState(() {
-      _scoreRight++;
-    });
-  }
-
-  void _decrementRight() {
-    setState(() {
-      if (_scoreRight > 0) _scoreRight--;
-    });
-  }
-
-  void _reset() {
-    setState(() {
-      _scoreLeft = 0;
-      _scoreRight = 0;
-    });
-  }
+  void _incrementLeft() => setState(() => _scoreLeft++);
+  void _decrementLeft() => setState(() { if (_scoreLeft > 0) _scoreLeft--; });
+  void _incrementRight() => setState(() => _scoreRight++);
+  void _decrementRight() => setState(() { if (_scoreRight > 0) _scoreRight--; });
+  void _reset() => setState(() { _scoreLeft = 0; _scoreRight = 0; });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF121212),
       appBar: AppBar(
-        title: const Text(
-          'Contador',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: const Text("Contador", style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: const Color(0xFF1E1E1E),
         elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            tooltip: 'Zerar Placar',
+            tooltip: "Zerar Placar",
             onPressed: _reset,
           )
         ],
@@ -86,7 +58,6 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
             Expanded(
               child: Row(
                 children: [
-                  // Lado Esquerdo (Azul)
                   Expanded(
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
@@ -97,24 +68,13 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            'TIME A',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          const Text("TIME A", style: TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.bold)),
                           const SizedBox(height: 20),
                           FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              '\',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 100,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              _scoreLeft.toString(),
+                              style: const TextStyle(color: Colors.white, fontSize: 100, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(height: 30),
@@ -122,14 +82,14 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               FloatingActionButton(
-                                heroTag: 'decLeft',
+                                heroTag: "decLeft",
                                 backgroundColor: Colors.white24,
                                 elevation: 0,
                                 onPressed: _decrementLeft,
                                 child: const Icon(Icons.remove, color: Colors.white, size: 30),
                               ),
                               FloatingActionButton(
-                                heroTag: 'incLeft',
+                                heroTag: "incLeft",
                                 backgroundColor: Colors.white,
                                 elevation: 2,
                                 onPressed: _incrementLeft,
@@ -141,8 +101,6 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
                       ),
                     ),
                   ),
-
-                  // Lado Direito (Vermelho)
                   Expanded(
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
@@ -153,24 +111,13 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            'TIME B',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          const Text("TIME B", style: TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.bold)),
                           const SizedBox(height: 20),
                           FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              '\',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 100,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              _scoreRight.toString(),
+                              style: const TextStyle(color: Colors.white, fontSize: 100, fontWeight: FontWeight.bold),
                             ),
                           ),
                           const SizedBox(height: 30),
@@ -178,14 +125,14 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               FloatingActionButton(
-                                heroTag: 'decRight',
+                                heroTag: "decRight",
                                 backgroundColor: Colors.white24,
                                 elevation: 0,
                                 onPressed: _decrementRight,
                                 child: const Icon(Icons.remove, color: Colors.white, size: 30),
                               ),
                               FloatingActionButton(
-                                heroTag: 'incRight',
+                                heroTag: "incRight",
                                 backgroundColor: Colors.white,
                                 elevation: 2,
                                 onPressed: _incrementRight,
@@ -206,16 +153,11 @@ class _ScoreboardScreenState extends State<ScoreboardScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF2C2C2C),
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 ),
                 onPressed: _reset,
                 icon: const Icon(Icons.refresh, color: Colors.white),
-                label: const Text(
-                  'ZERAR PLACAR',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                ),
+                label: const Text("ZERAR PLACAR", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
               ),
             ),
           ],
