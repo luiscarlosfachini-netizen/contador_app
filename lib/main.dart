@@ -12,7 +12,7 @@ class ContadorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Contador Online',
+      title: 'Contador',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xFF070C12),
         cardColor: const Color(0xFF0F1722),
@@ -130,12 +130,12 @@ class _ContadorPageState extends State<ContadorPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Contador online',
+                'Contador',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               const Text(
-                'Use este contador online para contar o que quiser.',
+                'Use este contador para contar o que quiser.',
                 style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
               const SizedBox(height: 20),
